@@ -36,7 +36,7 @@ var topics = ['Muhammed Ali', 'Kobe Bryant', 'Lebron James', 'Michael Jordan', '
                 gifDiv.append(personImage);
   
                 // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-                $("#gifs-appear-here").prepend(gifDiv);
+                $("#gif-images").prepend(gifDiv);
         }
 
         // var sportDiv = $("<div class='sportsmen'>");
@@ -46,9 +46,10 @@ var topics = ['Muhammed Ali', 'Kobe Bryant', 'Lebron James', 'Michael Jordan', '
         // var displayRating = $("<p>").text("Rating: " + rating);
 
         // sportDiv.append(displayRating);
-    })
+    }
 }
-    )
+    );
+});
     
 
 
@@ -78,6 +79,7 @@ $('#add-person').on('click', function(event){
     renderButtons();
 })
 
-$(document).on("click", ".sportsmen-btn");
+$(document).on("click", 'sportsmen-btn');
 
-renderButtons();
+      // Calling the renderButtons function to display the intial buttons
+      renderButtons();
