@@ -3,14 +3,14 @@ var topics = ['Muhammad Ali', 'Kobe Bryant', 'Lebron James', 'Michael Jordan', '
 
 renderButtons();
 
-    $('button').on('click', function(){
+    $(document).on('click', '.sportsmen-btn', function(){
     var sportData = $(this).attr('data-name');
-    var queryURL = 'https://api.giphy.com/v1/gifs/search&q=' + sportData + 'api_key=McsnolR8TBWZheBnkbVE8Cczf83ggjI1&limit=10&rating';
-    
+    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + sportData + '&api_key=McsnolR8TBWZheBnkbVE8Cczf83ggjI1&limit=10&rating';
+    console.log('test');
     $.ajax({
         url: queryURL,
         method: 'GET'
-    }).then(function(response){
+    }).then(function(response) {
         console.log(response);
         var results = response.data;
         
@@ -24,9 +24,15 @@ renderButtons();
                 var p = $("<p>").text("Rating: " + rating);
   
                 var personImage = $("<img>");
-  
-                personImage.attr("src", results[i].images.fixed_height.url);
-  
+                var animated = results[i].images.fixed_height.url;
+                var still = results[i].images.fixed_height_still.url;
+                
+                personImage.attr("src", still);
+                personImage.attr('data-still', still);
+                personImage.attr('data-animate', animated);
+                personImage.attr('data-state', 'still');
+                personImage.addClass('gif-animation')
+
                 gifDiv.append(p);
                 gifDiv.append(personImage);
                 
@@ -36,6 +42,19 @@ renderButtons();
     }
 }
     );
+});
+
+$(document).on('click', '.gif-animation', function(){
+    console.log('working');
+    var currentState = $(this).attr('data-state');
+    console.log(currentState);
+    if(currentState === 'still'){
+        $(this).attr('data-state', 'animate');
+        $(this).attr('src', $(this).attr('data-animate'));
+    }else{
+        $(this).attr('data-state', 'still');
+        $(this).attr('src', $(this).attr('data-still'));
+    }
 });
     
 
