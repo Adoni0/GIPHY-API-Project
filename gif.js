@@ -1,7 +1,7 @@
 //Sports Icons
 var topics = ['Muhammad Ali', 'Kobe Bryant', 'Lebron James', 'Michael Jordan', 'Tom Brady', 'Peyton Manning', 'Joe Montana', 'Floyd Mayweather', 'Jerry Rice', 'Tiger Woods', 'Arnold Palmer', 'Phil Mickelson', 'Roger Federer', 'Serena Williams', 'Maria Sharapova', 'Danica Patrick', 'Mike Tyson', 'Conor McGregor', 'Jon Jones', 'Emmit Smith', 'Magic Johnson', 'Larry Bird', 'Lisa Leslie', 'Lionel Messi', 'Cristiano Ronaldo'];
 
-renderButtons();
+renderButtons(); //creates buttons for the exixting topics array
 
     $(document).on('click', '.sportsmen-btn', function(){
     var sportData = $(this).attr('data-name');
@@ -15,7 +15,7 @@ renderButtons();
         var results = response.data;
         
         for (var i = 0; i < results.length; i++){
-            if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
+            if (results[i].rating !== "r" && results[i].rating !== "pg-13") { //checks if gifs are rated pg or g before displaying
                 
                 var gifDiv = $("<div>");
   
@@ -27,7 +27,7 @@ renderButtons();
                 var animated = results[i].images.fixed_height.url;
                 var still = results[i].images.fixed_height_still.url;
                 
-                personImage.attr("src", still);
+                personImage.attr("src", still); //sets default display to still
                 personImage.attr('data-still', still);
                 personImage.attr('data-animate', animated);
                 personImage.attr('data-state', 'still');
@@ -86,12 +86,8 @@ $('#add-person').on('click', function(event){
     
     $("#sport-input").val('');
     
-    topics.push(sport);
+    topics.push(sport); //pushes inputted sport figure to topics array
 
     renderButtons();
 });
 
-// $(document).on("click", '.sportsmen-btn');
-
-// Calling the renderButtons function to display the intial buttons
-// renderButtons();
