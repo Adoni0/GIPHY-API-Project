@@ -1,6 +1,6 @@
 button{
-    background-color: blue;
-    padding: 5px;
+    background-color: rgb(19, 133, 153);
+    padding: 7px;
     color: white;
 }
 
@@ -10,4 +10,11 @@ button{
 
 body{
     background-color:lightgrey;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    text-align: center;
+    color: lightcoral;
 }
